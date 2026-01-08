@@ -25,10 +25,14 @@ def home():
 
 @app.route('/<page>')
 def pages(page):
+    if page.startswith("static"):
+        return redirect(url_for('home'))
+
     try:
         return render_template(f'{page}.html')
     except:
-        return render_template('index.html')  # Fallback
+        return render_template('index.html')
+
 
 @app.route('/downloads/<filename>')
 def downloads(filename):
