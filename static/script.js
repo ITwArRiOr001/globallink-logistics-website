@@ -42,19 +42,18 @@ function validateForm(step) {
     return valid;
 }
 
-function openModal(modalId) {
+function openModal(modalId, productName = '', type = '', priceRange = '') {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
+        document.body.style.overflow = 'hidden';
     }
-}
 
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
+    // Auto-fill product quote modal fields
+    if (modalId === 'quoteModal') {
+        document.getElementById('modal-product-name').textContent = productName || 'Selected Product';
+        document.getElementById('modal-product-hidden').value = productName ? `${productName} (${priceRange})` : '';
+        document.getElementById('modal-type-hidden').value = type || '';
     }
 }
 // Shipping Calculator
