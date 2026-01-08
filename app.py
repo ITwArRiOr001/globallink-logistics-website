@@ -25,12 +25,14 @@ def home():
 
 @app.route('/<page>')
 def pages(page):
-    if page.startswith("static"):
+    # Block static & system files
+    if page.startswith(("static", "favicon", "robots", "sitemap")):
         return redirect(url_for('home'))
 
-    try:
-        return render_template(f'{page}.html')
-    except:
+    template = f"{page}.html"
+    if os.path.exists(os.path.join(app.template_folder, template)):
+        return render_template(template)
+    else:
         return render_template('index.html')
 
 
@@ -117,5 +119,6 @@ Page: {request.referrer or 'Direct'}
     flash(success_msg, 'success')
     return redirect(request.referrer or '/')
 
+# Optional local development server (ignored on Render)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=os.getenv("FLASK_DEBUG", "false").lower() in ("true", "1"))
