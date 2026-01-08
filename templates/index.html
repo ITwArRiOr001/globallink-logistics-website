@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Link Logistics: Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Mobile Menu and Overlay -->
+    <!--
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+    {{ messages[-1] }}
+</div>
+{% endif %}
+{% endwith %}
+-->
+    <div class="mobile-menu">
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <div class="overlay" onclick="toggleMobileMenu()"></div>
+
+    <header>
+        <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation" role="button" tabindex="0">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <rect class="bar1" width="100" height="15" rx="8"></rect>
+                <rect class="bar2" y="35" width="100" height="15" rx="8"></rect>
+                <rect class="bar3" y="70" width="100" height="15" rx="8"></rect>
+            </svg>
+        </div>
+        <div class="header-content">
+            <h1>Global Link Logistics</h1>
+            <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+        </div>
+        <div id="google_translate_element" class="translate-dropdown"></div>
+    </header>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <section id="home">
+        
+<h2 style="text-align: center;">Welcome to Global Link Logistics</h2>
+        <p>Founded on over 20 years of hands-on experience in the logistics field, our firm is dedicated to making international trade simple and efficient. We specialize in exporting high-quality Indian products—like fresh bananas via cold-chain units—to high-demand markets in the Gulf (UAE, Saudi Arabia, and more), or any country as per your needs. At the same time, we empower Indian entrepreneurs and businesses by sourcing and importing essential goods from China and other global suppliers, handling everything from customs to delivery.</p>
+        <div>
+        <h3 style="text-align: center;">Our Business Intention</h3>
+        <p>We bridge gaps in global trade: Helping Indian exporters reach international buyers with reliable, compliant shipping, and assisting importers in India to access affordable, quality products. Whether you're an Indian startup needing machinery from China or a Gulf retailer seeking fresh produce like bananas and coconuts, we're here to turn opportunities into reality.</p>
+        </div>
+        <h3>Why Choose Us?</h3>
+        <ul>
+            <li><strong>Expert Exports to Gulf/Anywhere</strong>: Focus on cold and dry cargo (e.g., bananas in refrigerated units for freshness)—phytosanitary certified, compliant with APEDA/FSSAI, and tailored to market demands.</li>
+            <li><strong>Imports for Indian Entrepreneurs</strong>: Seamless sourcing from China for electronics, raw materials, or custom items—full support on IEC, GST, and customs to fuel your business growth.</li>
+            <li><strong>Flexible and Client-Centric</strong>: No network? No problem—we build connections through our digital platform, ensuring personalized service for any country or product.</li>
+        </ul>
+
+<!-- Quick Stats Section -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-value">20+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-value">Gulf Focused</span>
+            <span class="stat-label">Primary Market</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-value">Cold Chain</span>
+            <span class="stat-label">Specialized</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-value">China Sourcing</span>
+            <span class="stat-label">Expertise</span>
+        </div>
+    </div>
+</section>
+
+        <!-- Visual Gallery -->
+        <h2>Our Expertise in Action</h2>
+        <div class="image-grid">
+            <div class="image-item">
+                <img src="images/bananas-loading.jpg" alt="Reefer container loading bananas at port" loading="lazy">
+                <p class="image-caption">Banana Loading at Port</p>
+            </div>
+                        <div class="image-item">
+                <img src="images/reefer-truck.jpg" alt="Temperature-Controlled Shipping in Transit" loading="lazy">
+                <p class="image-caption">Reefer Truck Transport</p>
+            </div>
+            <div class="image-item">
+                <img src="images/bananas-cold.jpg" alt="Fresh bananas in cold storage" loading="lazy">
+                <p class="image-caption">Banana Quality Check</p>
+            </div>
+
+            <div class="image-item">
+                <img src="images/loadreefer.jpg" alt="Precise Loading into Reefer Containers" loading="lazy">
+                <p class="image-caption">Loading a Reefer Container</p>
+            </div>
+            <div class="image-item">
+                <img src="images/gulf-port.jpg" alt="Banana Packaging" loading="lazy">
+                <p class="image-caption">Banana Packaging</p>
+            </div>
+            <div class="image-item">
+                <img src="images/china-factory.jpg" alt="China factory sourcing" loading="lazy">
+                <p class="image-caption">China Factory Sourcing</p>
+            </div>
+        </div>
+
+        <!-- Extra CTAs -->
+        <div class="cta-buttons">
+<button onclick="openModal('quoteModal')" class="cta-btn">Request Export Quote</button>
+        <button onclick="openModal('quoteModal')" class="cta-btn">Request Import Quote</button>
+        </div>
+
+        <!-- Testimonials -->
+        <h3>What Our Clients Say</h3>
+        <div class="testimonials">
+            <blockquote>"Great service for our banana shipments!" - Gulf Importer</blockquote>
+            <blockquote>"Reliable China sourcing partner." - Indian Entrepreneur</blockquote>
+        </div>
+
+    <button onclick="openModal('quoteModal')">Get a Free Quote Now</button>
+
+        <!-- Modal (Quote Request) - Web3Forms Integrated -->
+        <div class="modal" id="quoteModal">
+            <div class="modal-content">
+                <span onclick="closeModal('quoteModal')" style="float:right; cursor:pointer; font-size:32px; color:#999;">&times;</span>
+                <h3>Let's Get You a Real Quote!</h3>
+                <p style="text-align:center; color:#6C757D; margin-bottom:25px;">
+                    Loved the estimate?<br> Awesome! Tell us a bit more and our team will send you a <strong>custom quote in under 24 hours</strong>.<br><i> No spam, just good deals. 😊</i>
+                </p>
+
+                <form action="/submit-form" method="POST">
+    <input type="hidden" name="form_type" value="Quote Request">
+    
+    <label>Type of Shipment</label>
+    <select name="type" required>
+        <option value="export">Export (India → World)</option>
+        <option value="import">Import (World → India)</option>
+    </select>
+    
+    <label>Product / Commodity</label>
+    <input type="text" name="product" placeholder="e.g., Fresh Bananas, Spices, Electronics" required>
+    
+    <label>Quantity / Weight</label>
+    <input type="text" name="quantity" placeholder="e.g., 500 kg, 2 x 20ft containers" required>
+    
+    <label>Your Email</label>
+    <input type="email" name="email" placeholder="We'll send your quote here" required>
+    
+    <label>Origin & Destination (Required)</label>
+    <input type="text" name="route" placeholder="e.g., Mumbai to Dubai" required>
+    
+    <label>Additional Details (Optional)</label>
+    <textarea name="message" rows="3" placeholder="Cold chain needed? Urgent delivery? Special requirements? Tell us everything!"></textarea>
+    
+    <button type="submit" class="cta-btn">Send Quote Request</button>
+    
+    <p style="font-size:13px; color:#888; text-align:center; margin-top:20px;">
+        🔒 Your info is safe with us. We hate spam too.
+    </p>
+</form>
+            </div>
+        </div>
+
+<!-- Subscribe Form - Professional & Reliable -->
+<h3>Stay Informed - Sign Up for Trade Updates</h3>
+<form action="/submit-form" method="POST" class="subscribe-form">
+    <input type="hidden" name="form_type" value="Newsletter Subscription">
+    
+    <div class="subscribe-grid">
+        <input type="email" name="email" placeholder="Your Email" required 
+               style="padding:15px; border-radius:12px 0 0 12px; border:2px solid #e0e0e0; font-size:17px; box-sizing:border-box;">
+        
+        <button type="submit" class="cta-btn" 
+                style="border-radius:0 12px 12px 0; padding:15px 30px; font-size:17px; border:none; cursor:pointer;">
+            Subscribe
+        </button>
+    </div>
+    
+    <p style="font-size:13px; color:#888; text-align:center; margin-top:10px;">
+        No spam — only valuable trade tips, updates, and offers.
+    </p>
+</form>
+    </section>
+    <footer>
+        <div class="trust-badges">
+            <img src="images/apeda-badge.png" alt="APEDA Certified" loading="lazy">
+            <img src="images/fssai-badge.png" alt="FSSAI Compliant" loading="lazy">
+            <img src="images/iec-badge.png" alt="IEC Registered" loading="lazy">
+            <img src="https://cdn.vectorstock.com/i/500p/88/34/20-years-celebration-seal-golden-logo-vector-52738834.jpg" alt="20+ Years Experience" loading="lazy">
+        </div>
+        <p>&copy; 2025 Global Link Logistics | Privacy Policy | SSL Secured</p>
+    </footer>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
+  <!-- Google Translate - Classic Dropdown + Reliable Loading -->
+<div id="google_translate_element" class="translate-dropdown"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,ar,zh-CN',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // Classic dropdown with arrow
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    
+    // Load script dynamically for reliability across all pages
+    (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+</script>
+    <!-- BotPenguin Chatbot (Replace with your script after signup) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://cdn.botpenguin.com/bot.js?'+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','YOUR-BOT-ID-HERE');</script>
+    <script src="script.js"></script>
+</body>
+</html>
