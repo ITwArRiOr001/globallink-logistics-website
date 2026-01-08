@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 # Initialize Resend securely from env var
 resend.api_key = os.getenv("RESEND_API_KEY")
 # Create Flask app – SINGLE LINE with static fix
-app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.getenv("SECRET_KEY", "change_this_to_a_long_random_string_in_render")
 
 # ==================== Routes ====================
