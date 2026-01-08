@@ -333,7 +333,7 @@ footer {
 
 /* Hero Background (Shared for all pages) */
 header {
-    background: linear-gradient(rgba(0,123,255,0.7), rgba(0,123,255,0.7)), url('static/images/hero.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0,123,255,0.7), rgba(0,123,255,0.7)), url('/static/images/hero.jpg') center/cover no-repeat;
     min-height: 300px;
 }
 
