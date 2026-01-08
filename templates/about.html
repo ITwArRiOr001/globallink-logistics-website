@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Global Link Logistics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+              <!--
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+    {{ messages[-1] }}
+</div>
+{% endif %}
+{% endwith %}
+-->
+    <!-- Mobile Menu & Overlay -->
+    <div class="mobile-menu">
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <div class="overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation" role="button" tabindex="0">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <rect class="bar1" width="100" height="15" rx="8"></rect>
+                <rect class="bar2" y="35" width="100" height="15" rx="8"></rect>
+                <rect class="bar3" y="70" width="100" height="15" rx="8"></rect>
+            </svg>
+        </div>
+        <div class="header-content">
+            <h1>Global Link Logistics</h1>
+            <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+        </div>
+        <div id="google_translate_element" class="translate-dropdown"></div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="about.html" class="active">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h2>Engineering Confidence in Global Trade</h2>
+        <p class="hero-subtitle">
+            Global Link Logistics exists to simplify international trade by combining logistics expertise, regulatory clarity, and customer-first execution.
+        </p>
+    </section>
+
+    <!-- Company Story -->
+    <section class="about-story">
+        <div class="story-container">
+            <h3>Who We Are</h3>
+            <p>
+                Built on precision. Proven through execution.
+            </p>
+            <p>
+                Global Link Logistics was founded to solve a simple but costly problem:
+                international trade fails when clarity, compliance, and coordination break down.
+            </p>
+            <p>
+                We operate at the intersection of regulation, logistics planning, and execution, supporting exporters and importers across India, the GCC, and emerging global corridors.
+            </p>
+            <p>
+                Every successful shipment represents dozens of silent decisions —
+                documentation checks, compliance validations, timing coordination, risk mitigation, and contingency planning.
+            </p>
+            <p>
+                Our team works through regulatory complexity, time pressure, and operational constraints so our clients don't have to.
+            </p>
+            <p>
+                This is not transactional logistics. This is responsibility-driven execution.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="about-mission-vision">
+        <div class="mv-grid">
+            <div class="mv-card">
+                <h3>Our Mission</h3>
+                <p>
+                    To reduce uncertainty, cost, and regulatory risk in global trade through disciplined logistics execution.
+                </p>
+            </div>
+
+            <div class="mv-card">
+                <h3>Our Vision</h3>
+                <p>
+                    To be recognized as a dependable logistics partner where compliance, clarity, and consistency define every shipment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="about-values">
+        <h3>Our Core Values</h3>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Reliability</h4>
+                <p>
+                    Consistent execution, accurate documentation, and zero shortcuts.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Operational Discipline</h4>
+                <p>
+                    Structured processes, checklists, and accountability at every stage.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Regulatory Integrity</h4>
+                <p>
+                    Absolute adherence to trade laws, customs regulations, and compliance standards.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Efficiency with Control</h4>
+                <p>
+                    Speed where possible, caution where required — never at the cost of risk.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Client Responsibility</h4>
+                <p>
+                    We treat every shipment as if delays, penalties, or losses affect us directly.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-marker"></div>
+                <h4>Long-Term Partnership</h4>
+                <p>
+                    We optimize for repeat success, not one-time transactions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Footprint -->
+    <section class="about-trust">
+        <h3>Operational Trust, Earned Over Time</h3>
+        <p>
+            We support over <strong>200+ businesses</strong> across India, UAE, Saudi Arabia,
+            and emerging global markets — from SMEs to growing enterprises.
+        </p>
+
+        <div class="credibility-strip">
+            <div class="credibility-item">
+                <h4>Client Base</h4>
+                <p>
+                    Serving 200+ active businesses — from first-time exporters to repeat enterprise clients.
+                </p>
+            </div>
+
+            <div class="credibility-item">
+                <h4>Geographic Coverage</h4>
+                <p>
+                    India ↔ UAE ↔ Saudi Arabia ↔ expanding trade corridors.
+                </p>
+            </div>
+
+            <div class="credibility-item">
+                <h4>Scope of Work</h4>
+                <p>
+                    End-to-end support: documentation, compliance, freight coordination, and advisory.
+                </p>
+            </div>
+                  
+<div class="credibility-item">
+    <h4>Execution Standard</h4>
+    <p>
+        Every shipment follows structured checklists, real-time monitoring, and contingency protocols — ensuring consistent outcomes across routes and cargo types.
+    </p>
+</div>
+        </div>
+    </section>
+
+    <!-- Closing Note -->
+    <section class="about-closing">
+        <p>
+            At Global Link Logistics, we don't just move cargo —
+            we move businesses forward with clarity, control, and confidence.
+        </p>
+        <button onclick="location.href='inquiry.html'" class="cta-btn">Discuss Your Trade Requirements</button>
+        <p style="margin-top: 20px; font-size: 16px; color: #666;">
+            Clear answers. No obligation.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="trust-badges">
+            <img src="images/apeda-badge.png" alt="APEDA Certified" loading="lazy">
+            <img src="images/fssai-badge.png" alt="FSSAI Compliant" loading="lazy">
+            <img src="images/iec-badge.png" alt="IEC Registered" loading="lazy">
+            <img src="https://cdn.vectorstock.com/i/500p/88/34/20-years-celebration-seal-golden-logo-vector-52738834.jpg" alt="20+ Years Experience" loading="lazy">
+        </div>
+        <p>&copy; 2025 Global Link Logistics | Privacy Policy | SSL Secured</p>
+    </footer>
+
+<!-- Google Translate - Classic Dropdown + Reliable Loading -->
+<div id="google_translate_element" class="translate-dropdown"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,ar,zh-CN',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // Classic dropdown with arrow
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    
+    // Load script dynamically for reliability across all pages
+    (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>

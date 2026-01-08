@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Link Logistics: Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+            <!--
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+    {{ messages[-1] }}
+</div>
+{% endif %}
+{% endwith %}
+-->
+    <!-- Mobile Menu and Overlay -->
+    <div class="mobile-menu">
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <div class="overlay" onclick="toggleMobileMenu()"></div>
+
+    <header>
+        <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation" role="button" tabindex="0">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <rect class="bar1" width="100" height="15" rx="8"></rect>
+                <rect class="bar2" y="35" width="100" height="15" rx="8"></rect>
+                <rect class="bar3" y="70" width="100" height="15" rx="8"></rect>
+            </svg>
+        </div>
+        <div class="header-content">
+            <h1>Global Link Logistics</h1>
+            <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+        </div>
+        <div id="google_translate_element" class="translate-dropdown"></div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="products.html">Products</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>We offer end-to-end logistics solutions for seamless import and export, specializing in cold-chain for perishables like bananas.</p>
+
+        <!-- Export Services Box -->
+        <div class="service-box">
+            <h3>Export Services (India to Gulf & Worldwide)</h3>
+            <p>Expert handling of cold and dry cargo with full compliance and temperature-controlled shipping.</p>
+            <div class="service-steps">
+                <ol>
+                    <li><span class="step-icon">📦</span>Sourcing & Quality Check</li>
+                    <li><span class="step-icon">📦</span>Packaging & Cold Chain Preparation</li>
+                    <li><span class="step-icon">📄</span>Documentation & Certifications</li>
+                    <li><span class="step-icon">🚢</span>Shipping & Tracking</li>
+                    <li><span class="step-icon">✅</span>Customs Clearance at Destination</li>
+                </ol>
+            </div>
+            <a href="downloads/export-checklist.pdf" download class="resource-btn">Download Export Checklist</a>
+        </div>
+
+        <!-- Import Services Box -->
+        <div class="service-box">
+            <h3>Import Services (From China & Global Suppliers)</h3>
+            <p>Reliable sourcing, customs support, and door-to-door delivery for Indian businesses.</p>
+            <div class="service-steps">
+                <ol>
+                    <li><span class="step-icon">🔍</span>Supplier Verification & Negotiation</li>
+                    <li><span class="step-icon">📦</span>Order Placement & Quality Inspection</li>
+                    <li><span class="step-icon">📄</span>Documentation Preparation</li>
+                    <li><span class="step-icon">🚢</span>Shipping Arrangement</li>
+                    <li><span class="step-icon">✅</span>Indian Customs Clearance & Delivery</li>
+                </ol>
+            </div>
+            <a href="downloads/import-checklist.pdf" download class="resource-btn">Download Import Checklist</a>
+        </div>
+
+        <!-- FAQs Accordion -->
+        <h3>Frequently Asked Questions</h3>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-button">What documents do I need for banana exports to the Gulf?</button>
+                <div class="accordion-content">
+                    <p>You'll need IEC, phytosanitary certificate, APEDA registration, FSSAI compliance, bill of lading, and commercial invoice. We handle all paperwork to avoid delays.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">How do you ensure bananas stay fresh during long shipping?</button>
+                <div class="accordion-content">
+                    <p>We use reefer containers with controlled temperature (13-14°C), pre-cooling, and real-time monitoring. Shelf life extends up to 4-6 weeks.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">What are the typical costs for exporting a container of bananas to UAE?</button>
+                <div class="accordion-content">
+                    <p>Costs vary by volume/season, but include freight (~$2000-3000), documentation, and insurance. Use our calculator for estimates — contact us for accurate quotes.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">How long does it take to export to Gulf countries?</button>
+                <div class="accordion-content">
+                    <p>Sea shipping: 10-15 days to UAE. We provide tracking from farm to destination.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Can you help with finding reliable suppliers in China?</button>
+                <div class="accordion-content">
+                    <p>Yes! We verify factories, negotiate prices, inspect quality, and handle sourcing for electronics, machinery, etc.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">What customs duties apply when importing from China?</button>
+                <div class="accordion-content">
+                    <p>Duties vary by HS code (10-30% BCD + IGST). We calculate exact landed cost and manage clearance to minimize surprises.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Is BIS certification needed for my imported product?</button>
+                <div class="accordion-content">
+                    <p>Many electronics require BIS/CRS. We check requirements and guide registration before shipping.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">What if my shipment gets delayed or damaged?</button>
+                <div class="accordion-content">
+                    <p>We insure all shipments and provide real-time tracking. In rare cases, we handle claims quickly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Note -->
+        <div class="security-note">
+            <span class="security-icon">🔒</span>
+            <p><strong>Your Data & Shipments Are Secure</strong>: We use encrypted communications, insured cargo, and comply with international security standards to protect your business.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-center">
+<button onclick="openModal('consultModal')" class="cta-btn">Book Consultation</button>
+        </div>
+
+        <!-- Modal (Book Consultation) -->
+        <div class="modal" id="consultModal">
+            <div class="modal-content consult-modal">
+              <span onclick="closeModal('consultModal')" class="close-btn">&times;</span>
+                <h3>Book a Free Consultation</h3>
+                <p style="text-align:center; margin-bottom:30px; color:#6C757D; font-size:18px;">
+                    Speak with our trade expert — 15-30 min call. No obligation.
+                </p>
+                
+               <form action="/submit-form" method="POST">
+    <input type="hidden" name="form_type" value="Consultation Booking">
+    
+    <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="name" placeholder="Full name" required>
+    </div>
+    <div class="form-group">
+        <label>Company Name</label>
+        <input type="text" name="company" placeholder="Your company (optional)">
+    </div>
+    <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email" placeholder="you@company.com" required>
+    </div>
+    <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" placeholder="+91" required>
+    </div>
+    <div class="form-group">
+        <label>I Need Help With *</label>
+        <select name="type" required>
+            <option value="">Select</option>
+            <option value="export">Export from India</option>
+            <option value="import">Import to India</option>
+            <option value="both">Both Export & Import</option>
+            <option value="compliance">Compliance & Licensing</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Tell Us About Your Needs</label>
+        <textarea name="message" rows="4" placeholder="e.g., Exporting bananas to UAE, sourcing machinery from China..."></textarea>
+    </div>
+    
+    <button type="submit" class="cta-btn">Book Consultation Now</button>
+    
+    <p style="font-size:13px; color:#888; text-align:center; margin-top:20px;">
+        🔒 Your information is secure and confidential.
+    </p>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="trust-badges">
+            <img src="images/apeda-badge.png" alt="APEDA Certified" loading="lazy">
+            <img src="images/fssai-badge.png" alt="FSSAI Compliant" loading="lazy">
+            <img src="images/iec-badge.png" alt="IEC Registered" loading="lazy">
+            <img src="https://cdn.vectorstock.com/i/500p/88/34/20-years-celebration-seal-golden-logo-vector-52738834.jpg" alt="20+ Years Experience" loading="lazy">
+        </div>
+        <p>&copy; 2025 Global Link Logistics | Privacy Policy | SSL Secured</p>
+    </footer>
+
+<!-- Google Translate - Classic Dropdown + Reliable Loading -->
+<div id="google_translate_element" class="translate-dropdown"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,ar,zh-CN',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // Classic dropdown with arrow
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    
+    // Load script dynamically for reliability across all pages
+    (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>

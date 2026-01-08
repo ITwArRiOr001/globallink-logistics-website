@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Link Logistics: Calculators</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+          <!--
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+    {{ messages[-1] }}
+</div>
+{% endif %}
+{% endwith %}
+-->
+  <div class="mobile-menu">
+    <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="inquiry.html">Inquiry</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="overlay" onclick="toggleMobileMenu()"></div>
+
+  <header>
+    <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation" role="button" tabindex="0">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+        <rect class="bar1" width="100" height="15" rx="8"></rect>
+        <rect class="bar2" y="35" width="100" height="15" rx="8"></rect>
+        <rect class="bar3" y="70" width="100" height="15" rx="8"></rect>
+      </svg>
+    </div>
+    <div class="header-content">
+      <h1>Global Link Logistics</h1>
+      <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+    </div>
+    <div id="google_translate_element" class="translate-dropdown"></div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="calculators.html" class="active">Calculators</a>
+    <a href="inquiry.html">Inquiry</a>
+    <a href="about.html">About</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section id="calculators">
+    <h2>Smart Trade Toolkit</h2>
+    <p>Use our one-stop calculator suite for global trade decisions. Get instant insights and request a quote based on your results.</p>
+
+    <!-- Tabs for Export/Import Filter -->
+    <div class="calc-tabs">
+      <button id="all-calculators-btn" class="tab-btn active" data-tab="all" type="button">All Calculators</button>
+      <button id="export-tools-btn" class="tab-btn" data-tab="export" type="button">Export Tools</button>
+      <button id="import-tools-btn" class="tab-btn" data-tab="import" type="button">Import Tools</button>
+    </div>
+
+    <!-- Calculator Grid -->
+    <div class="calc-grid">
+      <!-- Shipping Cost Estimator -->
+      <div class="calc-card" data-category="export">
+        <h3>🚢 Shipping Cost Estimator</h3>
+        <form id="shipping-form">
+          <label>Product Type</label>
+          <select id="product-type">
+            <option value="cold">Cold Chain (e.g., Bananas)</option>
+            <option value="dry">Dry Cargo (e.g., Spices)</option>
+          </select>
+
+          <label>Weight (kg)</label>
+          <input type="number" id="weight" min="1" required>
+
+          <label>Origin</label>
+          <select id="origin" required>
+            <option value="">Select Origin</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="delhi">Delhi</option>
+            <option value="dubai">Dubai</option>
+            <option value="jeddah">Jeddah</option>
+            <option value="shanghai">Shanghai</option>
+          </select>
+
+          <label>Destination</label>
+          <select id="dest" required>
+            <option value="">Select Destination</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="delhi">Delhi</option>
+            <option value="dubai">Dubai</option>
+            <option value="jeddah">Jeddah</option>
+            <option value="shanghai">Shanghai</option>
+          </select>
+
+          <button type="button" id="ship-calc-btn" disabled>Calculate</button>
+        </form>
+
+        <div id="shipping-result" class="result"></div>
+        <div class="skeleton-loader" id="ship-loader" style="display:none;"></div>
+        <canvas id="cost-chart" style="max-height:200px; margin-top:20px; display:none;"></canvas>
+
+        <div class="assumptions-bar">
+          <span class="info-icon">ℹ️</span> Assumptions
+          <div class="bar-content">
+            Estimates based on average speeds (sea: 500 km/day, air: 800 km/h). Weather factor simulates potential delays; real transit varies by route and conditions.
+          </div>
+        </div>
+
+      <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+      </div>
+
+      <!-- Duty & Tax Calculator -->
+      <div class="calc-card" data-category="import">
+        <h3>📦 Duty & Tax Calculator</h3>
+
+        <form id="duty-" novalidate>
+          <label>
+            HS Code <span class="hint">(6-digit code)</span>
+          </label>
+          <input id="hs-code" list="hs-codes" placeholder="e.g. 0803" required>
+
+          <datalist id="hs-codes">
+            <option value="0803">Bananas</option>
+            <option value="0805">Citrus Fruits</option>
+            <option value="0902">Tea</option>
+          </datalist>
+
+          <label>
+            Shipment Value (USD) <span class="hint">(Invoice / FOB value)</span>
+          </label>
+          <input type="number" id="value" min="1" required>
+
+          <button type="button" id="duty-calc-btn" disabled>Calculate</button>
+        </form>
+
+        <p class="micro-note">Indicative estimate for planning purposes only.</p>
+
+        <div id="duty-result" class="result"></div>
+        <div class="skeleton-loader" id="duty-loader" style="display:none;"></div>
+        <table id="duty-breakdown" class="result-table" style="display:none;"></table>
+
+        <div class="assumptions-bar">
+          <span class="info-icon">ℹ️</span> Assumptions
+          <div class="bar-content">
+            Calculated using CIF valuation (Invoice Value + Freight 10% + Insurance 1%).
+            Final duty depends on port of import, HS classification, and applicable trade agreements.
+          </div>
+        </div>
+
+<button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+      </div>
+
+      <!-- Currency Converter -->
+      <div class="calc-card" data-category="all">
+        <h3>💱 Currency Converter & Hedging Estimator</h3>
+
+        <form id="currency-form" novalidate>
+          <label>Amount (INR) <span class="hint">(Invoice / exposure amount)</span></label>
+          <input type="number" id="amount" min="1" required>
+
+          <label>Convert To</label>
+          <select id="to-currency" required>
+            <option value="AED">AED – UAE Dirham</option>
+            <option value="USD">USD – US Dollar</option>
+            <option value="CNY">CNY – Chinese Yuan</option>
+          </select>
+
+          <button type="button" id="currency-calc-btn" disabled>Convert</button>
+        </form>
+
+        <p class="micro-note">Indicative FX rate for planning & costing only.</p>
+
+        <div id="currency-loader" class="skeleton-loader" style="display:none;"></div>
+        <div id="conv-result" class="result"></div>
+
+        <canvas id="rate-chart" style="max-height:200px; margin-top:20px; display:none;"></canvas>
+
+        <div class="assumptions-bar">
+          <span class="info-icon">ℹ️</span> Assumptions
+          <div class="bar-content">
+            Live market rates fetched from FX API.
+            Hedging indication is illustrative only — consult banks or FX advisors for forward contracts.
+          </div>
+        </div>
+
+        <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+      </div>
+
+      <!-- Container Load Optimizer -->
+      <div class="calc-card" data-category="export">
+        <h3>📦 Container Load Optimizer</h3>
+
+        <form id="load-form" novalidate>
+          <label>Product Dimensions (L × W × H in cm) <span class="hint">Single carton / box size</span></label>
+          <input type="text" id="dimensions" placeholder="e.g., 40x30x25" required>
+
+          <label>Quantity</label>
+          <input type="number" id="quantity" min="1" required>
+
+          <label>Container Type</label>
+          <select id="container-type" required>
+            <option value="20ft">20ft Container (589 × 235 × 239 cm)</option>
+            <option value="40ft">40ft Container (1203 × 235 × 239 cm)</option>
+          </select>
+
+          <button type="button" id="load-calc-btn" disabled>Optimize Load</button>
+        </form>
+
+        <p class="micro-note">Indicative calculation for export planning & quotation.</p>
+
+        <div id="load-loader" class="skeleton-loader" style="display:none;"></div>
+        <div id="load-result" class="result"></div>
+
+        <canvas id="load-visual" style="max-height:200px; margin-top:20px; display:none;"></canvas>
+
+        <div class="assumptions-bar">
+          <span class="info-icon">ℹ️</span> Assumptions
+          <div class="bar-content">
+            Simple orthogonal packing (no rotation optimization).
+            Real-world loading depends on palletization, stacking limits, weight distribution and cargo nature.
+          </div>
+        </div>
+
+        <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+      </div>
+
+      <!-- Transit Time & Risk Estimator -->
+      <div class="calc-card full-width" data-category="all">
+        <h3>⏱ Transit Time & Risk Estimator</h3>
+
+        <form id="transit-form">
+          <label>Origin</label>
+          <select id="transit-origin" required>
+            <option value="">Select Origin</option>
+            <optgroup label="India">
+              <option value="mumbai">Mumbai</option>
+              <option value="delhi">Delhi</option>
+            </optgroup>
+            <optgroup label="Gulf">
+              <option value="dubai">Dubai</option>
+              <option value="jeddah">Jeddah</option>
+            </optgroup>
+            <optgroup label="China">
+              <option value="shanghai">Shanghai</option>
+            </optgroup>
+          </select>
+
+          <label>Destination</label>
+          <select id="transit-dest" required>
+            <option value="">Select Destination</option>
+            <optgroup label="India">
+              <option value="mumbai">Mumbai</option>
+              <option value="delhi">Delhi</option>
+            </optgroup>
+            <optgroup label="Gulf">
+              <option value="dubai">Dubai</option>
+              <option value="jeddah">Jeddah</option>
+            </optgroup>
+            <optgroup label="China">
+              <option value="shanghai">Shanghai</option>
+            </optgroup>
+          </select>
+
+          <label>Mode</label>
+          <select id="transit-mode">
+            <option value="sea">Sea</option>
+            <option value="air">Air</option>
+          </select>
+
+          <label>Weather Factor (1-10)</label>
+          <input type="number" id="weather-factor" min="1" max="10" value="5" required>
+
+          <button type="button" id="transit-calc-btn" disabled>Estimate</button>
+        </form>
+
+        <div id="transit-result" class="result"></div>
+        <div class="skeleton-loader" id="transit-loader" style="display:none;"></div>
+        <canvas id="risk-chart" style="max-height:200px; margin-top:20px; display:none;"></canvas>
+
+        <div class="assumptions-bar">
+          <span class="info-icon">ℹ️</span> Assumptions
+          <div class="bar-content">
+            Estimates based on average speeds (sea: 500 km/day, air: 800 km/h). Weather factor simulates potential delays; real transit varies by route and conditions.
+          </div>
+        </div>
+
+        <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+      </div>
+    </div>
+    <!-- Carbon Footprint / Environmental Impact Calculator -->
+<div class="calc-card full-width" data-category="all">
+  <h3>🌿 Carbon Footprint Calculator</h3>
+  
+  <form id="carbon-form" novalidate>
+    <label>Distance (km)</label>
+    <input type="number" id="carbon-distance" min="1" required>
+    
+    <label>Weight (kg)</label>
+    <input type="number" id="carbon-weight" min="1" required>
+    
+    <label>Mode of Transport</label>
+    <select id="carbon-mode" required>
+      <option value="sea">Sea</option>
+      <option value="air">Air</option>
+      <option value="road">Road</option>
+    </select>
+    
+    <label>Packaging Type</label>
+    <select id="packaging-type" required>
+      <option value="none">None / Minimal</option>
+      <option value="carton">Carton / Paper</option>
+      <option value="plastic">Plastic Wrap</option>
+      <option value="wood">Wooden Pallet/Crate</option>
+    </select>
+    
+    <label>Carbon Offset Price (USD per ton CO₂) (optional)</label>
+    <input type="number" id="offset-price" min="0" placeholder="e.g., 20">
+    
+    <button type="button" id="carbon-calc-btn" disabled>Calculate</button>
+  </form>
+  
+  <div id="carbon-result" class="result"></div>
+  <div class="skeleton-loader" id="carbon-loader" style="display:none;"></div>
+  <canvas id="carbon-chart" style="max-height:200px; margin-top:20px; display:none;"></canvas>
+  
+  <div class="assumptions-bar">
+    <span class="info-icon">ℹ️</span> Assumptions
+    <div class="bar-content">
+      Uses a distance-based tonne-km method (tonnes × km × factor).
+      Factors are indicative; use carrier-specific or DEFRA/UK Gov factors for reporting-grade accuracy.
+    </div>
+  </div>
+  <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
+</div>
+
+<!-- Modal (Quick Quote Request - Professional & Intellectual) -->
+<div class="modal" id="quoteModal">
+  <div class="modal-content">
+    <span onclick="closeModal('quoteModal')" style="float:right; cursor:pointer; font-size:32px; color:#999;">&times;</span>
+    <h3>Request a Custom Quotation</h3>
+    <p style="text-align:center; color:#6C757D; margin-bottom:30px; font-size:16px; line-height:1.6;">
+      Thank you for exploring our trade calculators. To receive a precise, obligation-free quotation tailored to your requirements, please complete the form below. <br>Our logistics experts will respond within 24 hours.
+    </p>
+<form id="quote-form" action="/submit-form" method="POST">
+  <input type="hidden" name="form_type" value="Calculator Quote Request">
+  
+  <label>Type of Shipment</label>
+  <select name="type" required>
+    <option value="">Please select</option>
+    <option value="export">Export (India → International)</option>
+    <option value="import">Import (International → India)</option>
+  </select>
+  
+  <label>Product / Commodity</label>
+  <input type="text" placeholder="e.g., Fresh Fruits, Spices, Machinery" name="product" required>
+  
+  <label>Quantity / Volume</label>
+  <input type="text" placeholder="e.g., 500 kg, 2 × 20ft containers" name="quantity" required>
+  
+  <label>Email Address</label>
+  <input type="email" placeholder="name@company.com" name="email" required>
+  
+  <label>Origin & Destination (Optional)</label>
+  <input type="text" placeholder="e.g., Mumbai to Dubai" name="route">
+  
+  <label>Additional Requirements (Optional)</label>
+  <textarea placeholder="Temperature-controlled transport, hazardous goods declaration, specific timing, or any other preferences." name="message" rows="4"></textarea>
+  
+  <button type="submit" class="cta-btn">Submit Request</button>
+  
+  <p style="font-size:13px; color:#888; text-align:center; margin-top:20px;">
+    Your information is treated with strict confidentiality and used solely for preparing your quotation.
+  </p>
+</form>
+  </div>
+</div>
+  </section>
+
+  <footer>
+    <div class="trust-badges">
+      <img src="images/apeda-badge.png" alt="APEDA Certified" loading="lazy">
+      <img src="images/fssai-badge.png" alt="FSSAI Compliant" loading="lazy">
+      <img src="images/iec-badge.png" alt="IEC Registered" loading="lazy">
+      <img src="https://cdn.vectorstock.com/i/500p/88/34/20-years-celebration-seal-golden-logo-vector-52738834.jpg" alt="20+ Years Experience" loading="lazy">
+    </div>
+    <p>&copy; 2025 Global Link Logistics | Privacy Policy | SSL Secured</p>
+  </footer>
+
+<!-- Google Translate - Classic Dropdown + Reliable Loading -->
+<div id="google_translate_element" class="translate-dropdown"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,ar,zh-CN',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // Classic dropdown with arrow
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+  
+  // Load script dynamically for reliability across all pages
+  (function() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    var firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(script, firstScript);
+  })();
+</script>
+
+  <script src="script.js"></script>
+  <script src="calculators.js"></script>
+</body>
+</html>

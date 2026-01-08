@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Global Link Logistics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+              <!--
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+    {{ messages[-1] }}
+</div>
+{% endif %}
+{% endwith %}
+-->
+    <!-- Mobile Menu & Overlay -->
+    <div class="mobile-menu">
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+    <div class="overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation" role="button" tabindex="0">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <rect class="bar1" width="100" height="15" rx="8"></rect>
+                <rect class="bar2" y="35" width="100" height="15" rx="8"></rect>
+                <rect class="bar3" y="70" width="100" height="15" rx="8"></rect>
+            </svg>
+        </div>
+        <div class="header-content">
+            <h1>Global Link Logistics</h1>
+            <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+        </div>
+        <div id="google_translate_element" class="translate-dropdown"></div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <h2>Let’s Start the Conversation</h2>
+        <p class="hero-subtitle">
+            Whether you're exploring global trade, need urgent logistics support, or have a question — our specialists are here to help with clarity and confidence.
+        </p>
+        <p class="response-guarantee">
+            <strong>We respond within 24 hours — always.</strong>
+        </p>
+    </section>
+
+    <!-- Contact Channels -->
+    <section class="contact-channels">
+        <div class="channels-grid">
+            <div class="channel-card">
+                <div class="channel-icon">📧</div>
+                <h3>Email Us</h3>
+                <p><strong>General Inquiries</strong></p>
+                <a href="mailto:info@globallinklogistics.com">info@globallinklogistics.com</a>
+                <p><strong>Quotes & Pricing</strong></p>
+                <a href="mailto:quotes@globallinklogistics.com">quotes@globallinklogistics.com</a>
+            </div>
+
+            <div class="channel-card">
+                <div class="channel-icon">📞</div>
+                <h3>Call Us</h3>
+                <p><strong>India (Mumbai)</strong></p>
+                <a href="tel:+912212345678">+91 22 1234 5678</a>
+                <p><strong>UAE (Dubai)</strong></p>
+                <a href="tel:+97149876543">+971 4 987 6543</a>
+            </div>
+            <div class="channel-card">
+    <span class="channel-icon">💬</span>
+    <h3>Message on WhatsApp</h3>
+    <p>Quick response for quotes, tracking, or urgent inquiries</p>
+    <a href="https://wa.me/919511757301" target="_blank">+91 98765 *****</a>
+</div>
+
+            <div class="channel-card">
+                <div class="channel-icon">📍</div>
+                <h3>Key Operational Ports</h3>
+                <p><strong>Mumbai Office</strong><br>Andheri East, Mumbai – 400069, India</p>
+                <p><strong>Dubai Port</strong><br>Jebel Ali Port – where we handle your cargo transfers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Embedded Map Section -->
+    <section class="contact-map">
+        <h3>Our Key Locations</h3>
+        <div class="map-grid">
+            <div class="map-card">
+                <h4>Mumbai Office</h4>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.014449456789!2d72.877655!3d19.076090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627a5b3c4f7%3A0x6c8f1e8b9d2a3b4c!2sAndheri+East%2C+Mumbai%2C+Maharashtra+400069%2C+India!5e0!3m2!1sen!2sin!4v1735584000000" 
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="map-card">
+                <h4>Jebel Ali Port (Dubai)</h4>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.987612345678!2d55.061234!3d25.011456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496e4f3d5f%3A0x2f6e9f8a7b6c5d4e!2sJebel+Ali+Port!5e0!3m2!1sen!2sae!4v1735584000000" 
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section">
+    <div class="form-container">
+        <h3>Send Us a Message</h3>
+        <p>Prefer to write? Share your details — a specialist will reply within <strong>24 hours</strong>.</p>
+        
+<form action="/submit-form" method="POST" id="contact-form">
+    <input type="hidden" name="form_type" value="Contact Message">
+    
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" required placeholder="Full name">
+        </div>
+        <div class="form-group">
+            <label>Your Email *</label>
+            <input type="email" name="email" required placeholder="you@company.com">
+        </div>
+    </div>
+    
+    <div class="form-group full">
+        <label>Your Message *</label>
+        <textarea name="message" rows="7" required placeholder="Briefly describe your inquiry — shipping, compliance, sourcing, or anything else."></textarea>
+    </div>
+    
+    <button type="submit" class="cta-btn">Send Message</button>
+    
+    <p class="form-note">
+        🔒 Your information is secure and confidential. We only use it to respond to your inquiry.
+    </p>
+</form>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="trust-badges">
+            <img src="images/apeda-badge.png" alt="APEDA Certified" loading="lazy">
+            <img src="images/fssai-badge.png" alt="FSSAI Compliant" loading="lazy">
+            <img src="images/iec-badge.png" alt="IEC Registered" loading="lazy">
+            <img src="https://cdn.vectorstock.com/i/500p/88/34/20-years-celebration-seal-golden-logo-vector-52738834.jpg" alt="20+ Years Experience" loading="lazy">
+        </div>
+        <p>&copy; 2025 Global Link Logistics | Privacy Policy | SSL Secured</p>
+    </footer>
+
+<!-- Google Translate - Classic Dropdown + Reliable Loading -->
+<div id="google_translate_element" class="translate-dropdown"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,ar,zh-CN',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // Classic dropdown with arrow
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    
+    // Load script dynamically for reliability across all pages
+    (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+</script>
+    <script src="script.js"></script>
+</body>
+</html>
