@@ -52,7 +52,7 @@ function openModal(modalId, productName = '', type = '', priceRange = '') {
     // Auto-fill for product quote modal (fixed template literal)
     if (modalId === 'quoteModal') {
         document.getElementById('modal-product-name').textContent = productName || 'Selected Product';
-        document.getElementById('modal-product-hidden').value = productName ? `\( {productName} ( \){priceRange})` : '';
+        document.getElementById('modal-product-hidden').value = productName ? `${productName} (${priceRange})` : '';
         document.getElementById('modal-type-hidden').value = type || '';
     }
 }
@@ -75,12 +75,15 @@ function calculateShipping() {
   if (document.getElementById('ship-result')) document.getElementById('ship-result').innerText = `Estimated Cost: $${cost.toFixed(2)} (Time: 5-7 days)`;
 }
 
-// Duty Estimator
 function estimateDuty() {
     const value = parseFloat(document.getElementById('value')?.value || 0);
     const rate = 0.1; // 10% example
     const duty = value * rate;
-    if (document.getElementById('duty-result')) document.getElementById('duty-result').innerText = `Estimated Duty: $${duty.toFixed(2)}`;
+
+    if (document.getElementById('duty-result')) {
+        document.getElementById('duty-result').innerText =
+            `Estimated Duty: $${duty.toFixed(2)}`;
+    }
 }
 
 // Currency Converter
