@@ -183,6 +183,7 @@ function toggleMobileMenu() {
 // Init on load - FIXED VERSION
 document.addEventListener('DOMContentLoaded', () => {
     initGlobalThankYouRedirect();
+
     // Set active nav
     const links = document.querySelectorAll('nav a');
     links.forEach(link => {
@@ -200,6 +201,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.mobile-menu a').forEach(link => {
         link.addEventListener('click', toggleMobileMenu);
     });
+
+    // ===============================
+    // FIX: Duty & Tax Calculator Button
+    // ===============================
+    const dutyBtn = document.getElementById('duty-calc-btn');
+    const dutyForm = document.getElementById('duty-form');
+
+    if (dutyBtn) {
+        dutyBtn.addEventListener('click', () => {
+            estimateDuty();
+        });
+    }
+
+    // Optional: auto-calc while typing (safe)
+    if (dutyForm) {
+        dutyForm.addEventListener('input', debounce(estimateDuty, 500));
+    }
+});
     
     // 🔥 PRODUCTS PAGE: Search + Category Filter (WORKING)
     const categorySelect = document.getElementById("category-filter");
@@ -404,26 +423,25 @@ function initWizard() {
         }
     });
     
-    // Submit handler
     form.addEventListener('submit', (e) => {
+    // Validate before submit
+    const ok1 = validateStep(1);
+    const ok2 = validateStep(2);
+
+    if (!ok1) {
         e.preventDefault();
-        
-        // Validate step 1 + 2 before submit
-        const ok1 = validateStep(1);
-        const ok2 = validateStep(2);
-        if (!ok1) return setWizardStep(1, { scroll: true });
-        if (!ok2) return setWizardStep(2, { scroll: true });
-        
-        // Example: replace with Formspree / your backend fetch
-        // const payload = Object.fromEntries(new FormData(form).entries());
-        
-        alert('Inquiry submitted successfully! We will contact you within 24 hours.');
-        form.reset();
-        // Reset UI state
-        document.querySelectorAll('.intent-card').forEach(c => c.classList.remove('is-selected'));
-        setWizardStep(1);
-        updateStageUI(); // reset hint/note
-    });
+        return setWizardStep(1, { scroll: true });
+    }
+
+    if (!ok2) {
+        e.preventDefault();
+        return setWizardStep(2, { scroll: true });
+    }
+
+    // ✅ LET FORM SUBMIT NORMALLY TO FLASK
+    // No alert
+    // No preventDefault
+});
     
     // Allow clicking step indicators (optional UX)
     document.querySelectorAll('.wizard-step').forEach((stepEl, idx) => {
