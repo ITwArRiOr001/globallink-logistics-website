@@ -1479,26 +1479,83 @@ h2 {
     font-size: 15px;
     opacity: 0.95;
 }
-/* Trust Visual Divider */
+/* Trust Visual Divider – Premium Handshake Effect */
 .trust-visual {
-    margin: 30px auto 10px;
+    margin: 60px auto 40px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Subtle background glow & gradient border */
+.trust-visual::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 123, 255, 0.08) 0%, transparent 60%);
+    opacity: 0.6;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+/* Inner container with elegant card feel */
 .trust-visual-inner {
-    max-width: 600px;
-    margin: auto;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 123, 255, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Handshake – elongated, centered, with premium effects */
 .trust-visual img {
-    max-width: 180px;
-    opacity: 0.95;
+    width: 260px;                   /* Elongated size (wider) */
+    height: auto;
+    max-width: 90%;
+    display: block;
+    margin: 0 auto 20px;
+    filter: 
+        drop-shadow(0 8px 16px rgba(0, 123, 255, 0.25))
+        brightness(1.05)
+        contrast(1.1);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Hover animation – subtle lift + glow */
+.trust-visual-inner:hover img {
+    transform: translateY(-12px) scale(1.08);
+    filter: 
+        drop-shadow(0 16px 32px rgba(0, 123, 255, 0.35))
+        brightness(1.1);
+}
+
+/* Caption – modern, clean typography */
 .trust-visual p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #6b7280;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4b5563;
+    letter-spacing: 0.4px;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .trust-visual-inner {
+        padding: 30px 20px;
+    }
+    .trust-visual img {
+        width: 220px;
+    }
 }
 
 /* ================= INQUIRY PAGE - Professional Mobile-Centered Form ================= */
