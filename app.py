@@ -113,7 +113,7 @@ Page: {request.referrer or 'Direct'}
     # -------- Send Email --------
     try:
         resend.Emails.send({
-            "from": "no-reply@globallinklogistics.com",
+            "from": "Global Link <onboarding@resend.dev>",
             "to": os.getenv("BUSINESS_EMAIL"),
             "subject": f"Website {form_type} - {name or 'New Lead'}",
             "text": email_body,
