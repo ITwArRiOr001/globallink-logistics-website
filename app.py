@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 # Initialize Resend securely from env var
 resend.api_key = os.getenv("RESEND_API_KEY")
-# Create Flask app – SINGLE LINE with static fix
+
+# Create Flask app
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.getenv("SECRET_KEY", "change_this_to_a_long_random_string_in_render")
 
@@ -23,11 +24,12 @@ app.secret_key = os.getenv("SECRET_KEY", "change_this_to_a_long_random_string_in
 def home():
     return render_template('index.html')
 
+
 @app.route('/<page>')
 def pages(page):
-    # Block static & system files
+    # Block static, system files, and path traversal
     if page.startswith(("static", "favicon", "robots", "sitemap")) or ".." in page or "/" in page:
-    return redirect(url_for('home'))
+        return redirect(url_for('home'))
 
     template = f"{page}.html"
     if os.path.exists(os.path.join(app.template_folder, template)):
@@ -41,8 +43,9 @@ def downloads(filename):
     try:
         return send_from_directory('downloads', filename, as_attachment=True)
     except FileNotFoundError:
-    flash("File not found. Please contact us.", "error")
+        flash("File not found. Please contact us.", "error")
         return redirect(request.referrer or '/')
+
 
 @app.route('/submit-form', methods=['POST'])
 def submit_form():
@@ -57,25 +60,38 @@ def submit_form():
     quantity = request.form.get('quantity', '').strip()
     route = request.form.get('route', '').strip()
 
-    # Validation
+    # ==================== Validation ====================
     errors = []
-    if not form_type:
-    errors.append("Invalid form submission.")
 
-if not os.getenv("BUSINESS_EMAIL"):
-    logger.error("BUSINESS_EMAIL is not set in environment variables.")
-    errors.append("Server configuration error. Please try later.")
+    # Validate form type
+    if not form_type:
+        errors.append("Invalid form submission.")
+
+    # Validate email
+    if not email or '@' not in email:
+        errors.append("Valid email is required.")
+
+    # Only require name for non-quote forms
+    if form_type not in ("Quote Request", "Newsletter Subscription"):
+        if not name:
+            errors.append("Name is required.")
+
+    # Ensure business email is configured
+    if not os.getenv("BUSINESS_EMAIL"):
+        logger.error("BUSINESS_EMAIL is not set in environment variables.")
+        errors.append("Server configuration error. Please try again later.")
+
     if errors:
         for err in errors:
-            flash(err, 'error')
+            flash(err, "error")
         return redirect(request.referrer or '/')
 
-    # Email body
+    # ==================== Email Body ====================
     email_body = f"""
 NEW {form_type.upper()} FROM WEBSITE
 
 --- Customer Details ---
-Name: {name}
+Name: {name or 'Not provided'}
 Company: {company or 'Not provided'}
 Email: {email}
 Phone: {phone or 'Not provided'}
@@ -99,7 +115,7 @@ Page: {request.referrer or 'Direct'}
         resend.Emails.send({
             "from": "no-reply@globallinklogistics.com",
             "to": os.getenv("BUSINESS_EMAIL"),
-            "subject": f"Website {form_type} - {name}",
+            "subject": f"Website {form_type} - {name or 'New Lead'}",
             "text": email_body,
             "reply_to": email
         })
@@ -118,8 +134,9 @@ Page: {request.referrer or 'Direct'}
     else:
         success_msg += " Our team will contact you soon."
 
-    flash(success_msg, 'success')
+    flash(success_msg, "success")
     return redirect(request.referrer or '/')
+
 
 # Optional local development server (ignored on Render)
 if __name__ == '__main__':
