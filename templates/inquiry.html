@@ -151,121 +151,144 @@
        </div>
      </div>
      
-     <form id="inquiry-form" class="smart-form" novalidate>
-       <!-- Step 1 -->
-       <div class="form-step is-active" data-step="1">
-         <div class="grid-2">
-           <div class="form-group">
-             <label for="fullName">Full Name *</label>
-             <input id="fullName" type="text" placeholder="e.g. Rajesh Kumar" autocomplete="name" required />
-             <small class="field-error" data-error-for="fullName"></small>
-           </div>
-           
-           <div class="form-group">
-             <label for="companyName">Company Name *</label>
-             <input id="companyName" type="text" placeholder="e.g. ABC Exports Pvt Ltd" autocomplete="organization" required />
-             <small class="field-error" data-error-for="companyName"></small>
-           </div>
-         </div>
-         
-         <div class="grid-2">
-           <div class="form-group">
-             <label for="email">Email Address *</label>
-             <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required />
-             <small class="field-error" data-error-for="email"></small>
-           </div>
-           
-           <div class="form-group">
-             <label for="phone">Phone (Optional)</label>
-             <input id="phone" type="tel" placeholder="+91 9XXXXXXXXX" autocomplete="tel" />
-           </div>
-         </div>
-         
-         <div class="wizard-actions">
-           <button type="button" class="btn-secondary" data-prev disabled>Back</button>
-           <button type="button" class="btn-primary" data-next>Continue</button>
-         </div>
-       </div>
-       
-       <!-- Step 2 -->
-       <div class="form-step" data-step="2">
-         <div class="segmented-wrap">
-           <p class="segmented-title">Which path describes you?</p>
-           <div class="segmented-toggle" role="radiogroup" aria-label="Inquiry stage">
-             <input type="radio" name="stage" id="stage-beginner" value="Beginner" checked />
-             <input type="radio" name="stage" id="stage-business" value="Business" />
-             <label for="stage-beginner" class="toggle-half">
-               <span class="toggle-title">🌱 Beginner</span>
-               <small>Starting from zero</small>
-             </label>
-             <label for="stage-business" class="toggle-half">
-               <span class="toggle-title">🏢 Business</span>
-               <small>Already operating</small>
-             </label>
-             <div class="toggle-slider"></div>
-           </div>
-           <div class="stage-hint" id="stageHint">
-             Beginner mode: simple, step-by-step guidance.
-           </div>
-         </div>
-         
-         <div class="form-group">
-           <label for="inquiryType">Type of Inquiry *</label>
-           <select id="inquiryType" required>
-             <option value="">Select</option>
-             <option value="Start Import–Export Business">Start Import–Export Business</option>
-             <option value="Export Assistance">Export Assistance</option>
-             <option value="Import Sourcing">Import Sourcing</option>
-             <option value="Licensing & Compliance">Licensing & Compliance</option>
-             <option value="Other">Other</option>
-           </select>
-           <small class="field-error" data-error-for="inquiryType"></small>
-         </div>
-         
-         <div class="form-group">
-           <label for="inquiryMessage">Your Message *</label>
-           <textarea id="inquiryMessage" rows="5" placeholder="Describe your product, destination, timeline, or problem..." required></textarea>
-           <small class="field-error" data-error-for="inquiryMessage"></small>
-         </div>
-         
-         <div class="beginner-note" id="beginnerNote">
-           <strong>New to Import–Export?</strong><br />
-           Many clients start with zero experience. Guidance is explained clearly, step by step.
-         </div>
-         
-         <div class="wizard-actions">
-           <button type="button" class="btn-secondary" data-prev>Back</button>
-           <button type="button" class="btn-primary" data-next>Continue</button>
-         </div>
-       </div>
-       
-       <!-- Step 3 -->
-       <div class="form-step" data-step="3">
-         <div class="confirm-card">
-           <h4>Confirm your inquiry</h4>
-           <p class="confirm-sub">Review the key details before submitting.</p>
-           
-           <div class="confirm-grid">
-             <div><span>Name</span><strong id="cName">—</strong></div>
-             <div><span>Company</span><strong id="cCompany">—</strong></div>
-             <div><span>Email</span><strong id="cEmail">—</strong></div>
-             <div><span>Stage</span><strong id="cStage">—</strong></div>
-             <div><span>Type</span><strong id="cType">—</strong></div>
-           </div>
-           
-           <p class="form-trust">
-             🔒 Your details remain confidential. Human response within 24 hours.
-           </p>
-         </div>
-         
-         <div class="wizard-actions">
-           <button type="button" class="btn-secondary" data-prev>Back</button>
-           <button type="button" class="btn-primary btn-glow" id="submit-inquiry">Submit Inquiry</button>
-         </div>
-         
-         <p class="tiny-note">By submitting, you agree to be contacted via email/phone for this request.</p>
-       </div>
-     </form>
+     <form id="inquiry-form" class="smart-form" action="/submit-form" method="POST" novalidate>
+
+  <!-- REQUIRED FOR BACKEND -->
+  <input type="hidden" name="form_type" value="Inquiry Wizard">
+
+  <!-- STEP 1 -->
+  <div class="form-step is-active" data-step="1">
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input id="fullName" name="name" type="text"
+               placeholder="e.g. Rajesh Kumar"
+               autocomplete="name" required />
+        <small class="field-error" data-error-for="fullName"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="companyName">Company Name *</label>
+        <input id="companyName" name="company" type="text"
+               placeholder="e.g. ABC Exports Pvt Ltd"
+               autocomplete="organization" required />
+        <small class="field-error" data-error-for="companyName"></small>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input id="email" name="email" type="email"
+               placeholder="you@company.com"
+               autocomplete="email" required />
+        <small class="field-error" data-error-for="email"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone (Optional)</label>
+        <input id="phone" name="phone" type="tel"
+               placeholder="+91 9XXXXXXXXX"
+               autocomplete="tel" />
+      </div>
+    </div>
+
+    <div class="wizard-actions">
+      <button type="button" class="btn-secondary" data-prev disabled>Back</button>
+      <button type="button" class="btn-primary" data-next>Continue</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="form-step" data-step="2">
+    <div class="segmented-wrap">
+      <p class="segmented-title">Which path describes you?</p>
+
+      <div class="segmented-toggle" role="radiogroup">
+        <input type="radio" name="stage" id="stage-beginner"
+               value="Beginner" checked />
+        <input type="radio" name="stage" id="stage-business"
+               value="Business" />
+
+        <label for="stage-beginner" class="toggle-half">
+          <span class="toggle-title">🌱 Beginner</span>
+          <small>Starting from zero</small>
+        </label>
+
+        <label for="stage-business" class="toggle-half">
+          <span class="toggle-title">🏢 Business</span>
+          <small>Already operating</small>
+        </label>
+
+        <div class="toggle-slider"></div>
+      </div>
+
+      <div class="stage-hint" id="stageHint">
+        Beginner mode: simple, step-by-step guidance.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inquiryType">Type of Inquiry *</label>
+      <select id="inquiryType" name="type" required>
+        <option value="">Select</option>
+        <option value="Start Import–Export Business">Start Import–Export Business</option>
+        <option value="Export Assistance">Export Assistance</option>
+        <option value="Import Sourcing">Import Sourcing</option>
+        <option value="Licensing & Compliance">Licensing & Compliance</option>
+        <option value="Other">Other</option>
+      </select>
+      <small class="field-error" data-error-for="inquiryType"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="inquiryMessage">Your Message *</label>
+      <textarea id="inquiryMessage" name="message" rows="5"
+                placeholder="Describe your product, destination, timeline, or problem..."
+                required></textarea>
+      <small class="field-error" data-error-for="inquiryMessage"></small>
+    </div>
+
+    <div class="wizard-actions">
+      <button type="button" class="btn-secondary" data-prev>Back</button>
+      <button type="button" class="btn-primary" data-next>Continue</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="form-step" data-step="3">
+    <div class="confirm-card">
+      <h4>Confirm your inquiry</h4>
+      <p class="confirm-sub">Review the key details before submitting.</p>
+
+      <div class="confirm-grid">
+        <div><span>Name</span><strong id="cName">—</strong></div>
+        <div><span>Company</span><strong id="cCompany">—</strong></div>
+        <div><span>Email</span><strong id="cEmail">—</strong></div>
+        <div><span>Stage</span><strong id="cStage">—</strong></div>
+        <div><span>Type</span><strong id="cType">—</strong></div>
+      </div>
+
+      <p class="form-trust">
+        🔒 Your details remain confidential. Human response within 24 hours.
+      </p>
+    </div>
+
+    <div class="wizard-actions">
+      <button type="button" class="btn-secondary" data-prev>Back</button>
+
+      <!-- IMPORTANT: THIS MUST BE submit -->
+      <button type="submit" class="btn-primary btn-glow">
+        Submit Inquiry
+      </button>
+    </div>
+
+    <p class="tiny-note">
+      By submitting, you agree to be contacted via email/phone for this request.
+    </p>
+  </div>
+
+</form>
    </div>
  </section>
 
