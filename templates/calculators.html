@@ -8,15 +8,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-          <!--
-{% with messages = get_flashed_messages() %}
+          {% with messages = get_flashed_messages() %}
 {% if messages %}
-<div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 12px; text-align: center; font-weight: bold; font-size: 18px;">
+<div class="flash-message success">
     {{ messages[-1] }}
 </div>
 {% endif %}
 {% endwith %}
--->
+
   <div class="mobile-menu">
     <button class="close-menu" onclick="toggleMobileMenu()">×</button>
     <ul>
