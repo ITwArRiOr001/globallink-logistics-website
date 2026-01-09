@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
     <!-- Mobile Menu & Overlay -->
     <div class="mobile-menu">
         <button class="close-menu" onclick="toggleMobileMenu()">×</button>
