@@ -249,7 +249,6 @@ if (e.key === "Escape") {
     });
 }
 });
-});
 // Accordion Functionality
 document.querySelectorAll('.accordion-button').forEach(button => {
     button.addEventListener('click', () => {
