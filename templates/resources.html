@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
+       <!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <div class="flash-container">
       {% for category, message in messages %}
-        <div class="flash-message {{ category }}">{{ message }}</div>
+        <div class="flash-message {{ category }}">
+          {{ message }}
+        </div>
       {% endfor %}
     </div>
   {% endif %}
@@ -219,7 +222,15 @@
         firstScript.parentNode.insertBefore(script, firstScript);
     })();
 </script>
-
+<script>
+  setTimeout(() => {
+    document.querySelectorAll('.flash-message').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-10px)';
+      setTimeout(() => el.remove(), 400);
+    });
+  }, 3000);
+</script>
     <script src="/static/script.js"></script>
 </body>
 </html>
