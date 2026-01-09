@@ -26,8 +26,8 @@ def home():
 @app.route('/<page>')
 def pages(page):
     # Block static & system files
-    if page.startswith(("static", "favicon", "robots", "sitemap")):
-        return redirect(url_for('home'))
+    if page.startswith(("static", "favicon", "robots", "sitemap")) or ".." in page or "/" in page:
+    return redirect(url_for('home'))
 
     template = f"{page}.html"
     if os.path.exists(os.path.join(app.template_folder, template)):
@@ -41,7 +41,7 @@ def downloads(filename):
     try:
         return send_from_directory('downloads', filename, as_attachment=True)
     except FileNotFoundError:
-        flash("File not found. Please contact us.")
+    flash("File not found. Please contact us.", "error")
         return redirect(request.referrer or '/')
 
 @app.route('/submit-form', methods=['POST'])
@@ -59,10 +59,12 @@ def submit_form():
 
     # Validation
     errors = []
-    if not name:
-        errors.append("Name is required.")
-    if not email or '@' not in email:
-        errors.append("Valid email is required.")
+    if not form_type:
+    errors.append("Invalid form submission.")
+
+if not os.getenv("BUSINESS_EMAIL"):
+    logger.error("BUSINESS_EMAIL is not set in environment variables.")
+    errors.append("Server configuration error. Please try later.")
     if errors:
         for err in errors:
             flash(err, 'error')
