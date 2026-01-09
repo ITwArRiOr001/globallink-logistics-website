@@ -182,7 +182,7 @@ function toggleMobileMenu() {
 }toggleMobileMenu
 // Init on load - FIXED VERSION
 document.addEventListener('DOMContentLoaded', () => {
-    initGlobalThankYouRedirect();
+    
 
     // Set active nav
     const links = document.querySelectorAll('nav a');
