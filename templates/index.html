@@ -7,17 +7,13 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <!-- Mobile Menu and Overlay -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <div class="flash-container">
-      {% for category, message in messages %}
-        <div class="flash-message {{ category }}">{{ message }}</div>
-      {% endfor %}
+    <div class="flash-message alert alert-success">
+      {{ messages[0] }}
     </div>
   {% endif %}
 {% endwith %}
-
     
     <div class="mobile-menu">
         <button class="close-menu" onclick="toggleMobileMenu()">×</button>
@@ -43,8 +39,8 @@
             </svg>
         </div>
         <div class="header-content">
-            <h1>Global Link Logistics</h1>
-            <p>Bridging India to the Gulf and Beyond: Expert Import/Export Solutions</p>
+            <h1 class="hero-title">Global Link Logistics</h1>
+<p class="hero-subtitle">Connecting India to Global Trade</p>
         </div>
         <div id="google_translate_element" class="translate-dropdown"></div>
     </header>
