@@ -123,46 +123,113 @@
       <button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
       </div>
 
-      <!-- Duty & Tax Calculator -->
-      <div class="calc-card" data-category="import">
-        <h3>📦 Duty & Tax Calculator</h3>
+      <!-- Duty & Tax Calculator - Advanced Version -->
+<div class="calc-card" data-category="import">
+  <h3>📦 Duty & Tax Calculator</h3>
+  <p class="calc-subtitle">Estimate customs duty, GST & approximate landed cost</p>
 
-        <form id="duty-" novalidate>
-          <label>
-            HS Code <span class="hint">(6-digit code)</span>
-          </label>
-          <input id="hs-code" list="hs-codes" placeholder="e.g. 0803" required>
+  <form id="duty-form" class="calc-form" novalidate>
+    <div class="form-group">
+      <label for="hs-code">
+        HS Code <span class="required">*</span>
+        <span class="hint">(6-digit)</span>
+      </label>
+      <input 
+        type="text" 
+        id="hs-code" 
+        list="hs-codes" 
+        placeholder="e.g. 0803, 0902, 1701" 
+        pattern="[0-9]{4,10}" 
+        title="Please enter a valid HS code (4–10 digits)"
+        required
+      >
+      <datalist id="hs-codes">
+        <option value="0803">0803 – Bananas, fresh or dried</option>
+        <option value="0805">0805 – Citrus fruit (oranges, lemons...)</option>
+        <option value="0902">0902 – Tea, whether or not flavoured</option>
+        <option value="1701">1701 – Cane or beet sugar</option>
+        <option value="2710">2710 – Petroleum oils</option>
+        <option value="8703">8703 – Motor cars & vehicles</option>
+      </datalist>
+      <div class="error-message" data-error-for="hs-code"></div>
+    </div>
 
-          <datalist id="hs-codes">
-            <option value="0803">Bananas</option>
-            <option value="0805">Citrus Fruits</option>
-            <option value="0902">Tea</option>
-          </datalist>
+    <div class="form-group">
+      <label for="value">
+        Shipment Value (FOB/Invoice Value in USD) <span class="required">*</span>
+      </label>
+      <input 
+        type="number" 
+        id="value" 
+        min="1" 
+        step="0.01" 
+        placeholder="e.g. 25000" 
+        required
+      >
+      <div class="error-message" data-error-for="value"></div>
+    </div>
 
-          <label>
-            Shipment Value (USD) <span class="hint">(Invoice / FOB value)</span>
-          </label>
-          <input type="number" id="value" min="1" required>
+    <div class="form-actions">
+      <button 
+        type="button" 
+        id="duty-calc-btn" 
+        class="calc-btn" 
+        disabled
+      >
+        Calculate Duty & Tax
+      </button>
+    </div>
+  </form>
 
-          <button type="button" id="duty-calc-btn" disabled>Calculate</button>
-        </form>
+  <!-- Result Area -->
+  <div id="duty-result" class="result-box" style="display: none;"></div>
+  
+  <!-- Loading state -->
+  <div class="skeleton-loader" id="duty-loader" style="display: none;">
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line short"></div>
+    <div class="skeleton-line"></div>
+  </div>
 
-        <p class="micro-note">Indicative estimate for planning purposes only.</p>
+  <!-- Detailed Breakdown Table -->
+  <table id="duty-breakdown" class="result-table" style="display: none;">
+    <!-- Will be filled by JavaScript -->
+  </table>
 
-        <div id="duty-result" class="result"></div>
-        <div class="skeleton-loader" id="duty-loader" style="display:none;"></div>
-        <table id="duty-breakdown" class="result-table" style="display:none;"></table>
+  <!-- Assumptions & Disclaimer -->
+  <div class="assumptions-bar">
+    <span class="info-icon">ℹ️</span> 
+    <span class="assumptions-title">Important Assumptions & Disclaimer</span>
+    <div class="bar-content">
+      <ul>
+        <li>Freight estimated at 10% of invoice value</li>
+        <li>Insurance estimated at 1% of invoice value</li>
+        <li>Uses simplified CIF valuation method</li>
+        <li>GST applied at 18% (common rate – may vary)</li>
+        <li>Duty rates are examples only – actual rates depend on:
+          <ul>
+            <li>Exact HS classification</li>
+            <li>Country of import</li>
+            <li>Trade agreements / exemptions</li>
+            <li>Customs authority final assessment</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="micro-note"><strong>This is an indicative calculation for planning purposes only. Not for official use or customs declaration.</strong></p>
+    </div>
+  </div>
 
-        <div class="assumptions-bar">
-          <span class="info-icon">ℹ️</span> Assumptions
-          <div class="bar-content">
-            Calculated using CIF valuation (Invoice Value + Freight 10% + Insurance 1%).
-            Final duty depends on port of import, HS classification, and applicable trade agreements.
-          </div>
-        </div>
-
-<button onclick="openModal('quoteModal')" class="cta-btn" type="button">Get Full Quote</button>
-      </div>
+  <!-- Call to Action -->
+  <div class="cta-wrapper">
+    <button 
+      type="button" 
+      onclick="openModal('quoteModal', 'Customs Duty & Tax Assistance', 'Duty Consultation')" 
+      class="cta-btn"
+    >
+      Get Professional Quote & Clearance Support →
+    </button>
+  </div>
+</div>
 
       <!-- Currency Converter -->
       <div class="calc-card" data-category="all">
