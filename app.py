@@ -60,6 +60,38 @@ def submit_form():
     quantity = request.form.get('quantity', '').strip()
     route = request.form.get('route', '').strip()
 
+@app.route("/subscribe", methods=["POST"])
+def subscribe():
+    email = request.form.get("email", "").strip().lower()
+
+    # Basic validation
+    if not email or "@" not in email:
+        flash("Please enter a valid email address.", "error")
+        return redirect(request.referrer or "/")
+
+    # Ensure BUSINESS_EMAIL is set
+    if not os.getenv("BUSINESS_EMAIL"):
+        logger.error("BUSINESS_EMAIL is not set in environment variables.")
+        flash("Server configuration error. Please try again later.", "error")
+        return redirect(request.referrer or "/")
+
+    try:
+        resend.Emails.send({
+            "from": "no-reply@globallinklogistics.com",
+            "to": os.getenv("BUSINESS_EMAIL"),
+            "subject": "New Newsletter Subscription",
+            "text": f"New subscriber email: {email}",
+            "reply_to": email
+        })
+
+        flash("Thank you for subscribing! You'll hear from us soon.", "success")
+        return redirect(request.referrer or "/")
+
+    except Exception as e:
+        logger.error(f"RESEND SUBSCRIBE ERROR: {e}")   # <-- critical for Render logs
+        flash("Server configuration error. Please try again later.", "error")
+        return redirect(request.referrer or "/")    
+
     # ==================== Validation ====================
     errors = []
 
