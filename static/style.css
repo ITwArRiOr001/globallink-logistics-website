@@ -1,3 +1,20 @@
+.flash-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.flash-message {
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.flash-message.success { background: #e6f8ec; color: #1f7a3f; }
+.flash-message.error { background: #fdeaea; color: #a12727; }
 
 body {
     font-family: Arial, sans-serif;
