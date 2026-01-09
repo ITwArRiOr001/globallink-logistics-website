@@ -1,25 +1,25 @@
 .flash-container {
   position: fixed;
-  top: 80px;
-  right: 20px;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 9999;
+  width: auto;
+  max-width: 90%;
+  text-align: center;
 }
-
 .flash-message {
-  padding: 12px 18px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    max-width: 90%;
-    text-align: center;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  animation: slideDown 0.4s ease;
 }
 
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .flash-message.success { background: #e6f8ec; color: #1f7a3f; }
 .flash-message.error { background: #fdeaea; color: #a12727; }
 
@@ -43,19 +43,20 @@ html {
 }
 
 header {
-    background: #007BFF;
+    background: linear-gradient(rgba(0,123,255,0.7), rgba(0,123,255,0.7)),
+                url("/static/images/hero.jpg") center/cover no-repeat;
     color: white;
-    padding: 20px;
-    text-align: left;
-    position: relative;
+    padding: 40px 20px;
+    min-height: 300px;
+
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    overflow: hidden;
+    text-align: center;
 }
 
 .header-content {
-    text-align: center;
+    max-width: 1000px;
     width: 100%;
 }
 .translate-dropdown {
@@ -352,12 +353,6 @@ footer {
     .hamburger {
         display: block;
     }
-}
-
-/* Hero Background (Shared for all pages) */
-header {
-    background: linear-gradient(rgba(0,123,255,0.7), rgba(0,123,255,0.7)), url('/static/images/hero.jpg') center/cover no-repeat;
-    min-height: 300px;
 }
 
 /* Stats Section */
@@ -2628,7 +2623,16 @@ h2 {
     border-radius: 10px;
     margin-top: 10px;
 }
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
 
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
 @media (max-width: 768px) {
     .quote-modal {
         width: calc(100% - 40px);
