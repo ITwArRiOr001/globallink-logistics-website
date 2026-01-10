@@ -38,6 +38,10 @@ def pages(page):
 
     return render_template("index.html")
 
+# ✅ ADD HEALTH CHECK HERE (BEST PLACE)
+@app.route("/health")
+def health_check():
+    return "OK", 200
 
 @app.route("/downloads/<filename>")
 def downloads(filename):
