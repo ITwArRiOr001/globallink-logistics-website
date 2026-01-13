@@ -1,3 +1,78 @@
+/* =========================================================
+   GLOBAL SPACING RHYTHM (ELITE)
+   ========================================================= */
+
+/* Vertical breathing between major sections */
+section {
+  margin-bottom: 4.5rem;
+}
+
+/* Surfaces feel layered, not stacked */
+.surface {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Tighten when surfaces follow each other */
+.surface + .surface {
+  margin-top: -1.6rem;
+}
+
+/* Headings breathe properly */
+.surface h2 {
+  margin-bottom: 1.6rem;
+}
+
+/* Paragraph rhythm */
+.surface p {
+  margin-bottom: 1.1rem;
+}
+
+/* Lists don’t feel cramped */
+.surface ul,
+.surface ol {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+/* =========================================================
+   MOBILE MICRO-UX POLISH
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Section rhythm tighter but breathable */
+  section {
+    margin-bottom: 3.2rem;
+  }
+
+  .surface {
+    margin-top: 2.6rem;
+    margin-bottom: 2.6rem;
+    border-radius: 16px;
+  }
+
+  /* Mobile nav tap comfort */
+  .mobile-menu a {
+    padding: 1rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* Text readability */
+  p {
+    line-height: 1.7;
+  }
+
+  /* Cards feel lighter */
+  .card {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  }
+
+  /* Avoid accidental taps */
+  .card-content {
+    padding-bottom: 1.7rem;
+  }
+}
 /* Flash Message Container */
 .flash-container {
   position: fixed;
